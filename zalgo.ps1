@@ -1,6 +1,6 @@
 function New-Zalgo {
 
-    #I copied this algorithm based off gregoryneal's implementation in python here:
+    #This implementation in PowerShell is based off gregoryneal's implementation in python here:
     #https://github.com/gregoryneal/zalgo/blob/master/code/zalgo_text/zalgo.py
 
     param(
@@ -72,6 +72,6 @@ function New-ZalgoCharacter {
     return ($TrimmedChar + $TrimmedDiacritic);
 }
 
-$x = New-Zalgo -inputstring "Test123."
+$x = New-Zalgo -inputstring "ZalgoPS"
 
 $x
