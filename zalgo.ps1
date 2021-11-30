@@ -31,6 +31,7 @@ function New-Zalgo {
             $NumDown = Get-Random -Minimum $RangeAccentsDown[0] -Maximum $RangeAccentsDown[1]
             $NumMiddle = Get-Random -Minimum $RangeAccentsMiddle[0] -Maximum $RangeAccentsMiddle[1]
 
+            
         while ($NumAccents -ne $MaxAccentsPerLetter -and $NumUp + $NumDown + $NumMiddle -ne 0 ){
                 $RandomInt = Get-Random -Minimum 0 -Maximum 2;
                 if ($RandomInt -eq 0){
