@@ -10,7 +10,6 @@ function New-Zalgo {
     [String[]]$upwardDiacritics= " ̍"," ̎"," ̄"," ̅"," ̿"," ̑"," ̆"," ̐"," ͒"," ͗"," ͑"," ̇"," ̈"," ̊"," ͂"," ̓"," ̈́"," ͊"," ͋"," ͌"," ̃"," ̂"," ̌"," ͐"," ́"," ̋"," ̏"," ̽"," ̉"," ͣ"," ͤ"," ͥ"," ͦ"," ͧ"," ͨ"," ͩ"," ͪ"," ͫ"," ͬ"," ͭ"," ͮ"," ͯ"," ̾"," ͛"," ͆"," ̚"
     [String[]]$middleDiacritics= " ̕"," ̛"," ̀"," ́"," ͘"," ̡"," ̢"," ̧"," ̨"," ̴"," ̵"," ̶"," ͜"," ͝"," ͞"," ͟"," ͠"," ͢"," ̸"," ̷"," ͡"
 
-    $NewLetters = @();
     $NewWord ="";
 
 
@@ -25,7 +24,6 @@ function New-Zalgo {
         $copy = $c;
 
         if ( $copy -notmatch $alphanumericpattern){
-            $NewLetters += $copy
             $NewWord += $copy        
         } else {
             $NumAccents = 0
@@ -33,7 +31,7 @@ function New-Zalgo {
             $NumDown = Get-Random -Minimum $RangeAccentsDown[0] -Maximum $RangeAccentsDown[1]
             $NumMiddle = Get-Random -Minimum $RangeAccentsMiddle[0] -Maximum $RangeAccentsMiddle[1]
 
-            while ($NumAccents -ne $MaxAccentsPerLetter -and $NumUp + $NumDown + $NumMiddle ){
+        while ($NumAccents -ne $MaxAccentsPerLetter -and $NumUp + $NumDown + $NumMiddle -ne 0 ){
                 $RandomInt = Get-Random -Minimum 0 -Maximum 2;
                 if ($RandomInt -eq 0){
                     $copy = New-ZalgoCharacter -inputstring $copy `
@@ -52,7 +50,6 @@ function New-Zalgo {
                     $NumMiddle -= 1
                 }               
             }
-            $NewLetters += $copy
             $NewWord += $copy
         }
     }
